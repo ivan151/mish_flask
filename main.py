@@ -21,7 +21,6 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @login_manager.user_loader
 def load_user(user_id):
-    print("HELLLLLLLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOOOOO", user_id)
     user = db_get_user(user_id)
     print(user)
     return user
@@ -60,7 +59,6 @@ def login():
         try:
             user = db_get_user_by_email(form.email.data)
             if user is not None and user.check_password(form.password.data):
-                print("URAAAAAAAAAAAAAA")
                 login_user(user)
                 next = request.args.get("next")
                 print("next", next)
